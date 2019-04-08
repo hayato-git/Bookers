@@ -8,19 +8,20 @@
 			<th> </th>
 		</tr>
 	</thead>
+
 	<tbody>
 		<%= @posts.each do |post| %>
 		<tr>
 			<td>
-				<%= post.title %>
+				<%= link_to post.title, post_path(post.id) %>
 			</td>
 			<td>
-				<%= post.body %>
+				<%= link_to post.body, post_path(post.id) %>
 			</td>
 			<td>
 				<%= link_to "Show", post_path(post.id) %>
-				<%= link_to "Edit", edit_post_path(@post) %>
-				<%= link_to "Destroy", destroy_post_path(@post), method: :delete, "date-confirm" =>"Are you sure?" %>
+				<%= link_to "Edit", edit_post_path(@post.id) %>
+				<%= link_to "Destroy", destroy_post_path(@post.id), method: :delete, "date-confirm" =>"Are you sure?" %>
 			</td>
 		</tr>
 		<% end %>
@@ -29,7 +30,7 @@
 
 <h2 class="headline">New Book</h2>
 
-<%= font_for(@post) do |f| %>
+<%= form_for(@post) do |f| %>
 
 	<h4 class="title">Title</h4>
 	<%= f.text_field :title %>
