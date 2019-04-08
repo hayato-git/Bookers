@@ -1,9 +1,41 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1 class="headline">Books</h1>
 
-<%= @posts.each do |post| %>
-	<%= post.title %>
+<table>
+	<thead>
+		<tr>
+			<th> Title </th>
+			<th> Body </th>
+			<th> </th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= @posts.each do |post| %>
+		<tr>
+			<td>
+				<%= post.title %>
+			</td>
+			<td>
+				<%= post.body %>
+			</td>
+			<td>
+				<%= link_to "Show", post_path(post.id) %>
+				<%= link_to "Edit", edit_post_path(@post) %>
+				<%= link_to "Destroy", destroy_post_path(@post), method: :delete, "date-confirm" =>"Are you sure?" %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
 
-	<%= post.body %>
+<h2 class="headline">New Book</h2>
+
+<%= font_for(@post) do |f| %>
+
+	<h4 class="title">Title</h4>
+	<%= f.text_field :title %>
+
+	<h4 class="body">Body</h4>
+	<%= f.text_area :body %>
+	<br><%= f.submit 'Create Book' %></br>
 
 <% end %>
