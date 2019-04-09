@@ -1,8 +1,15 @@
 
+
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
+
 <div class="title">Title :<%= @post.title %></div>
 
 <div class="body">Body :<%= @post.body %></div>
 
 <%= link_to "Edit |", edit_post_path(@post) %>
-<%= link_to "Back", post_path(@post) %>
+<%= link_to "Back", "http://localhost:3000/posts"%>
 

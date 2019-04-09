@@ -5,8 +5,12 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
-    post.save
-    redirect_to posts_path(post.id)
+    if post.save
+       flash[:notice] = "successfully"
+       redirect_to post_path(post.id)
+    else
+       render("posts/new")
+    end
   end
 
   def index
