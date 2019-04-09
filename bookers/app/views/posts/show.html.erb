@@ -10,6 +10,6 @@
 
 <div class="body">Body :<%= @post.body %></div>
 
-<%= link_to "Edit |", edit_post_path(@post) %>
-<%= link_to "Back", "http://localhost:3000/posts"%>
+<%= link_to "Edit |", edit_post_path(@post), class: 'edit_#{id}' %>
+<%= link_to "Back", "http://localhost:3000/posts", class: 'back' %>
 

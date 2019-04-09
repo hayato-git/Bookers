@@ -14,9 +14,9 @@
 		<tr>
 			<td><%= post.title %></td>
 			<td><%= post.body %></td>
-			<td><%= link_to "Show", post_path(post.id) %></td>
-			<td><%= link_to "Edit", edit_post_path(post.id) %></td>
-			<td><%= link_to "Destroy", post_path(post.id), method: :delete, "date-confirm" =>"Are you sure?" %></td>
+			<td><%= link_to "Show", post_path(post.id), class: 'show_#{id}' %></td>
+			<td><%= link_to "Edit", edit_post_path(post.id), class: 'edit_#{id}' %></td>
+			<td><%= link_to "Destroy", post_path(post.id), class: 'destroy_#{id}', method: :delete, date: { confirm:'Are you sure?'} %></td>
 		</tr>
 		<% end %>
 	</tbody>
@@ -29,10 +29,10 @@
 <%= form_for(@post) do |f| %>
 
 	<h4 class="title">Title</h4>
-	<%= f.text_field :title %>
+	<%= f.text_field :title, class: 'book_title' %>
 
 	<h4 class="body">Body</h4>
 	<%= f.text_area :body %>
-	<br><%= f.submit 'Create Book' %></br>
+	<br><%= f.submit 'Create Book', class: 'book_body' %></br>
 
 <% end %>
